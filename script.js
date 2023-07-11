@@ -1,3 +1,6 @@
+var saveButtonEl = $( '.fa-save' );
+var eventEl = $( '#userInput' ).val();
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -10,9 +13,24 @@ $(function () {
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
 
-    var x = "hello";
-    $("btn").on( "click", function() {
-        alert(x);
+    $( '.fa-save' ).on( 'click', function(event) {
+        //When you click saveBtn, get textarea's .value
+        var saveClick = event.target;
+        console.log(saveClick);
+        console.log(saveButtonEl[0]);
+
+        if (saveClick.matches("saveButtonEl") !== true){
+            for (var i=0; i<saveButtonEl.length; i++){
+                if (saveClick.matches("saveButtonEl"[i]) === true){
+                    alert("hello!");
+                    //localStorage.setItem("saveKey", eventEl);
+                    
+                }
+            }
+            //localStorage.setItem("eventKey", eventEl);
+            //alert("Hello!");
+        }
+
     });
     //
     // TODO: Add code to apply the past, present, or future class to each time
@@ -26,6 +44,8 @@ $(function () {
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
+    var today = dayjs();
+    $('#currentDay').text(today.format('dddd, MMMM D, YYYY h:mm:ss A'));
   });
 
   
